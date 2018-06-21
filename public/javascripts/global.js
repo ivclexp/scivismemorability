@@ -75,7 +75,6 @@ $(document).ready(function () {
 			var xValue = $('#mx-select').val();
 			var yValue = $('#my-select').val();
 			d3.csv('public/data/Massive Dataset.csv', function (error, data) {
-				console.log(data);
 				drawCorrelation(data, xValue, yValue);
 			});
 		}
@@ -128,8 +127,6 @@ function drawCorrelation(data,xLabel,yLabel){
 	var yHighest = d3.max(data,function(d){
 		return d.y;
 	})
-	// var yLowest = 0;
-	// var yHighest = 3.2
 
 
 	var x = d3.scaleLinear()
@@ -139,16 +136,6 @@ function drawCorrelation(data,xLabel,yLabel){
 	var y = d3.scaleLinear()
 		.domain([yLowest,yHighest])
 		.range([height,0])
-
-	//tips
- 	// tip = d3.tip().attr('class', 'd3-tip').html(function(d) { 
-
- 	// 	var url = d.url;
- 	// 	return "<img src="+url+" style='width:28px; height:28px'>";
- 	// 	//<img src="public/image/0.png" style="width: 160px; height: 160px;">
- 	// 	//style="width: 160px; height: 160px;">"
- 	// 	//return "<strong>"+d.url+": </strong> <span style='color:red'>$" +  "</span>";
- 	// });
 
  	var plot = "corr";
 
@@ -161,16 +148,6 @@ function drawCorrelation(data,xLabel,yLabel){
 		.attr("height",400)
 		.append("g")
     	.attr("transform", "translate(" + 80 + "," + margin.top + ")");
-
-	// svg.append("rect")
- //    .attr("width", "100%")
- //    .attr("height", "100%")
- //    .attr("fill", "#fff")
- //    .attr("transform", "translate(" + -60 + "," + -80 + ")");
-
-
-	// svg.append("g")
- //    	.attr("transform", "translate(" + 80 + "," + margin.top + ")");;
 
     var xAxis = d3.axisBottom(x);
     var yAxis = d3.axisLeft(y)
@@ -217,22 +194,16 @@ function drawCorrelation(data,xLabel,yLabel){
         d3.select(this).style("opacity","0.9");
         d3.select(this).style("cursor", "pointer"); 
         $('.origin-img').attr("src",d.url);
-        //console.log(d);
-        //$('#imageLabel').text(d.Label);
-        //tip.show(d,i);
     })
     .on("mouseout",function(){
         d3.select(this).attr("r",5);
         d3.select(this).style("opacity","0.9");
         d3.select(this).style("cursor", "default"); 
-        //tip.hide();
+
     })
 	.style("fill",function(d,i){
-		// var h = d.h;
-		// console.log(d.h,d.s,d.v);
 		return '#4684b1';
-		//return d3.hsv(d.h*360,d.s,d.v);
-		//return '#63a367';
+
 	})
 	.style("opacity","0.8")
 	.attr('r', 5);
