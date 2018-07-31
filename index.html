@@ -40,7 +40,7 @@
     <nav class="navbar navbar-expand-lg navbar-inverse fixed-top" id="mainNav">
         <div class="container">
             <a class="navbar-brand js-scroll-trigger" href="#page-top">
-                <span>Scimem</span>
+                <span>SciMem</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -60,13 +60,13 @@
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#download">Code & Data</a>
                     </li>
-<!--                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#">Paper</a>
-                    </li> -->
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#paper">Paper</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#about">Group</a>
                     </li>
-<!--                     <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#">Reference</a>
                     </li> -->
                 </ul>
@@ -79,7 +79,7 @@
     <header class="page-heading text-white">
         <div class="container text-center">
             <h1>
-                <span class="red-font">Scimem</span> Dataset</h1>
+                <span class="red-font">SciMem</span> Dataset</h1>
             <p class="lead">Scientific Visualization Memorability Dataset</p>
         </div>
     </header>
@@ -158,44 +158,44 @@
                     <br>
                     <label>x-axis:</label>
                     <select id="mx-select" class="form-control">
-                        <option value="distinct colors">distinct colors</option>                     
-                        <option value="edges">edges</option>
-                        <option value="feature congestion">feature congestion</option>
-                        <option value="entropy">entropy</option>
+                        <option value="Number of distinct colors">Number of distinct colors</option>                     
+                        <option value="Number of edges">Number of edges</option>
+                        <option value="Feature congestion">Feature congestion</option>
+                        <option value="Entropy">Entropy</option>
                         <option value="score">score</option>
                     </select>
                     <select id="x-select" class="form-control">   
-                        <option value="distinct colors">distinct colors</option>
-                        <option value="edges">edges</option>
-                        <option value="feature congestion">feature congestion</option>
-                        <option value="entropy">entropy</option>
-                        <option value="happiness">happiness</option>
-                        <option value="clutter">clutter</option>
-                        <option value="interestingness">interestingness</option>
-                        <option value="familiarity">familiarity</option>
-                        <option value="realism">realism</option>
+                        <option value="Number of distinct colors">Number of distinct colors</option>
+                        <option value="Number of edges">Number of edges</option>
+                        <option value="Feature congestion">Feature congestion</option>
+                        <option value="Entropy">Entropy</option>
+                        <option value="Happiness">Happiness</option>
+                        <option value="Clutter">Clutter</option>
+                        <option value="Interestingness">Interestingness</option>
+                        <option value="Familiarity">Familiarity</option>
+                        <option value="Realism">Realism</option>
                         <option value="score">score</option>
                     </select>
                     <br>
                     <label>y-axis:</label>
                     <select id="y-select" class="form-control">
                         <option value="score">score</option>
-                        <option value="distinct colors">distinct colors</option>
-                        <option value="edges">edges</option>
-                        <option value="feature congestion">feature congestion</option>
-                        <option value="entropy">entropy</option>
-                        <option value="happiness">happiness</option>
-                        <option value="clutter">clutter</option>
-                        <option value="interestingness">interestingness</option>
-                        <option value="familiarity">familiarity</option>
-                        <option value="realism">realism</option>                       
+                        <option value="Number of distinct colors">Number of distinct colors</option>
+                        <option value="Number of edges">Number of edges</option>
+                        <option value="Feature congestion">Feature congestion</option>
+                        <option value="Entropy">Entropy</option>
+                        <option value="Happiness">Happiness</option>
+                        <option value="Clutter">Clutter</option>
+                        <option value="Interestingness">Interestingness</option>
+                        <option value="Familiarity">Familiarity</option>
+                        <option value="Realism">Realism</option>                     
                     </select>
                     <select id="my-select" class="form-control">
                         <option value="score">score</option>
-                        <option value="distinct colors">distinct colors</option>                     
-                        <option value="edges">edges</option>
-                        <option value="feature congestion">feature congestion</option>
-                        <option value="entropy">entropy</option>
+                        <option value="Number of distinct colors">Number of distinct colors</option>                     
+                        <option value="Number of edges">Number of edges</option>
+                        <option value="Feature congestion">Feature congestion</option>
+                        <option value="Entropy">Entropy</option>
                     </select>
                     <br>
                     <label>Spearman correlation rank: <span id="correlation"></span></label>
@@ -217,11 +217,36 @@
         </div>
     </section>
 
-    <section id="download" class="bg-light">
+    <section id="paper" class="bg-light">
+        <div class="container">
+            <p class="red-font">
+                Paper
+                <!-- <button class="btn btn-primary">From high to low</button>&nbsp;&nbsp;&nbsp; 
+                        <button class="btn btn-primary">From low to high</button> -->
+            </p>
+            <p>
+                <strong>What Makes a Scientific Visualization Memorable? </strong> 
+                <a href="https://arxiv.org/submit/2348311/view" target="blank">
+                    [paper]
+                </a>
+                <!-- <a href="http://web.cse.ohio-state.edu/~li.8950/data/image/scivismemo/VisMemo-scivis.zip">
+                    [bibtex]
+                </a> -->
+                <br>
+                Rui Li and Jian Chen<br>
+                IEEE Scientific Visualization (SciVis), 2018 (to appear)
+            </p>
+            <br>
+            
+        </div>
+    </section>
+
+    <section id="download">
         <div class="container">
 
             <p class="">
-                We shared the following datasets and code of our experiment.  
+                We shared the following datasets and code of our experiment. 
+                Please cite our paper if you find these datasets useful in your research. 
                 <!-- <button class="btn btn-primary">From high to low</button>&nbsp;&nbsp;&nbsp; 
                         <button class="btn btn-primary">From low to high</button> -->
             </p>
@@ -263,7 +288,9 @@
         </div>
     </section>
 
-    <section id="about">
+    
+
+    <section id="about" class="bg-light">
         <div class="container">
             <h2>Researchers</h2>
             <br>
@@ -279,7 +306,7 @@
                 </div>
                 <div class="col-md-2 portrait-box">
 
-                    <img class="portrait-img" src="public/images/Jian.png">
+                    <img class="portrait-img" src="/public/images/Jian.png">
                     <br>
                     <br>
                     <a href="http://web.cse.ohio-state.edu/~chen.8028/Home.html" target="blank">Jian Chen</a>
