@@ -9,7 +9,7 @@ $(document).ready(function () {
 
 	//2. draw correlation
 	d3.csv('public/data/Scimem Dataset.csv',function(error,data){
-		drawCorrelation(data,'colorfulness2','score');
+		drawCorrelation(data,'distinct colors','score');
 	});
 
 	//3. blind event on ratio change
@@ -104,13 +104,22 @@ function drawCorrelation(data,xLabel,yLabel){
 	var margin = {top: 20, right: 20, bottom: 20, left: 20},
     width = 320 - margin.left - margin.right,
     height = 320 - margin.top - margin.bottom;
+	var xArray = [];
+	var yArray = [];
 
 	data.forEach(function(d) {
+		xArray.push(d[xLabel]);
+		yArray.push(d[yLabel]);
       	d.x = parseFloat(d[xLabel]);
       	d.y = parseFloat(d[yLabel]);
       	d.h = parseFloat(d.meanH);
       	d.s = parseFloat(d.meanS);
-      	d.v = parseFloat(d.meanV);
+		d.v = parseFloat(d.meanV);
+		d.L = parseFloat(d.L);
+		// d.A = parseFloat(d.A);
+		// d.B = parseFloat(d.B);
+		d.C = parseFloat(d.C);
+		d.H = parseFloat(d.H);
       	d.url = d.url;
   	});
 
@@ -128,6 +137,10 @@ function drawCorrelation(data,xLabel,yLabel){
 		return d.y;
 	})
 
+	//spearman rank
+	corr = spearson.correlation.spearman(xArray,yArray).toFixed(3);
+
+	$('#correlation').text(corr);
 
 	var x = d3.scaleLinear()
 		.domain([xLowest,xHighest])
@@ -190,6 +203,7 @@ function drawCorrelation(data,xLabel,yLabel){
 		return y(d.y);
 	})	
 	.on("mouseover",function(d,i){
+		//console.log(d);
         d3.select(this).attr("r",5);
         d3.select(this).style("opacity","0.9");
         d3.select(this).style("cursor", "pointer"); 
@@ -202,6 +216,9 @@ function drawCorrelation(data,xLabel,yLabel){
 
     })
 	.style("fill",function(d,i){
+		//return d3.lch(d.L,d.C,d.H);
+		//return d3.lab(d.L,d.A,d.B);
+		//return d3.hsv(d.h*360,d.s,d.v);
 		return '#4684b1';
 
 	})
