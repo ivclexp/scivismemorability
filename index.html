@@ -27,9 +27,11 @@
     <script src="public/lib/jquery-3.3.1.min.js"></script>
 
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3-color.v1.min.js"></script>
+    <script src="https://d3js.org/d3-hsv.v0.1.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-
+    <!-- Math JavaScript -->
+    <script src="public/javascripts/spearson.js"></script>
 
     <!-- Custom JavaScript -->
     <script src="public/javascripts/global.js"></script>
@@ -37,7 +39,9 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-inverse fixed-top" id="mainNav">
         <div class="container">
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><span>Scimem</span></a>
+            <a class="navbar-brand js-scroll-trigger" href="#page-top">
+                <span>Scimem</span>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
                 aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -54,11 +58,17 @@
                         <a class="nav-link js-scroll-trigger" href="#features">Visualization features</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="#download">Download</a>
+                        <a class="nav-link js-scroll-trigger" href="#download">Code & Data</a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#">Paper</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="#about">Group</a>
-                    </li> -->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link js-scroll-trigger" href="#">Reference</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -79,16 +89,18 @@
         <div class="container">
             <div class="row">
                 <p class="lead introduction-text">
-                    We report results from a preliminary study exploring the memorability of spatial scientific visualization. The goal is to
-                    understand the intrinsic visualization features that contribute memorability.The evaluation metrics include
-                    three objective metrics (entropy, feature congestion, the number of edges) and six subjective ratings
-                    (familiarity, interestingness, happiness, layout, style, and the number of distinct colors), inspired
-                    by measurements in vision science and recent memorability studies in infographics. By constructing a
-                    scientific visualization dataset and conducting an online experiment, we collect memorability scores
-                    on AMturk of 1142 images from the original 2231 images in published IEEE SciVis papers in the years 2008-2017.
-                    Our result showed that the memorability of scientific visualizations is correlated with color and layout.
-                    We further investigate the differences between scientific visualization and infographics as a means to
-                    design more memorable scientific visualizations.
+                    We report results from a preliminary study exploring the memorability of spatial scientific visualizations, 
+                    the goal which is to understand the intrinsic visualization features that contribute to memorability. 
+                    The evaluation metrics include three objective measures (entropy, feature congestion, the number of edges), 
+                    four subjective ratings (clutter, the number of distinct colors, familiarity, and realism), 
+                    and two sentiment ratings (interestingness and happiness), 
+                    all inspired by recent memorability studies in vision science and infographics. 
+                    By constructing a scientific visualization dataset and conducting an online experiment, 
+                    we collect memorability scores on Amazon Mechanical Turk (AMT) of 1142 images 
+                    from the original 2231 images in published IEEE SciVis papers from 2008 to 2017. 
+                    Results showed that the memorability of scientific visualizations is correlated with color and layout. 
+                    We further investigate the differences between scientific visualization and infographics 
+                    as a means to understand memorability differences of data attributes.
                 </p>
             </div>
         </div>
@@ -106,32 +118,38 @@
 
     <section id="features">
         <div class="container">
-            <p class="lead introduction-text">Memorability is often studied by presenting a brief glimpse of images, and features at all levels, low to high,
-                can contribute to their comprehension. Low-level features are used to describe image elements such as color,
-                size, and orientation. High-level features can help humans interpret specific objects in an image. Since
-                both low-level and high-level features are used extensively in spatial visualization, understanding the correlation
-                of image metrics with these features could automate the design of visualization techniques and increase the
-                impact of visualization in real-world applications. In our study, we selected a set of features that have
-                been shown to be useful in similar image and visualization evaluation tasks in order to study their correlation
-                with scientific visualization memorability. These features contained objective measurements such as
-                <b>entropy, feature congestion and edge numbers</b>, and subjective judgments of
-                <b>familiarity, happiness, interestingness, number of distinct colors, layout, and rendering style.</b>
+            <p class="lead introduction-text">Memorability is often studied by presenting a brief glimpse of images, 
+                and features at all levels, low to high, can contribute to their comprehension. 
+                Low-level features are used to describe image elements such as color statistics and luminance. 
+                High-level features containing Gestalt groupings can help humans interpret objects in complex spatial data visualization.
+                Since both low-level and high-level features are used extensively in spatial visualization, 
+                understanding the correlation of image metrics with these features could automate the 
+                design of visualization techniques and increase the impact of visualization in real-world applications. In our study,
+                we adapt and expand recent vision science studies and visualization methods and measured three objective 
+                (entropy, feature congestion, and the number of edges), 
+                four subjective (clutter, number of distinctive colors, familiarity, and realism), 
+                and two affectiveness metrics (interestingness or happiness) metrics to investigate the relationship 
+                between memorability and visualization features.
+                </b>
             </p>
 
             <hr>
 
             <p class="lead introduction-text">The following tools provide a convinient approach to observe the correlation betweens above features. Each dot
                 in the left plot represents one visualization. Hovering over each dot shows visualization associated with
-                each point. We also provide a comparison option with the <a href="http://massvis.mit.edu/" target="blank">Massive dataset.</a></p>
+                each point. We also provide a comparison option with the
+                <a href="http://massvis.mit.edu/" target="blank">Massive dataset.</a>
+            </p>
 
             <div class="row">
 
                 <div class="col-md-2">
                     <br>
-                    <label>Dataset:</label><br>
-                    <input  type="radio" name="datasetratio" id="scimemratio" value="Scimem Dataset" checked>&nbsp;&nbsp;Scimem Dataset
+                    <label>Dataset:</label>
                     <br>
-                    <input  type="radio" name="datasetratio" id="massiveratio" value="Massive Dataset">&nbsp;&nbsp;Massive Dataset
+                    <input type="radio" name="datasetratio" id="scimemratio" value="Scimem Dataset" checked>&nbsp;&nbsp;Scimem Dataset
+                    <br>
+                    <input type="radio" name="datasetratio" id="massiveratio" value="Massive Dataset">&nbsp;&nbsp;Massive Dataset
                     <br>
                     <!-- <select id="dataset-select" class="form-control">
                         <option value="sci">Scientific visualization dataset</option>
@@ -140,46 +158,47 @@
                     <br>
                     <label>x-axis:</label>
                     <select id="mx-select" class="form-control">
-                        <option value="colorfulness2">colorfulness</option>
+                        <option value="distinct colors">distinct colors</option>                     
                         <option value="edges">edges</option>
                         <option value="feature congestion">feature congestion</option>
                         <option value="entropy">entropy</option>
                         <option value="score">score</option>
                     </select>
-                    <select id="x-select" class="form-control">
-                        <option value="colorfulness2">colorfulness</option>
+                    <select id="x-select" class="form-control">   
+                        <option value="distinct colors">distinct colors</option>
                         <option value="edges">edges</option>
                         <option value="feature congestion">feature congestion</option>
                         <option value="entropy">entropy</option>
                         <option value="happiness">happiness</option>
-                        <option value="layout">layout</option>
+                        <option value="clutter">clutter</option>
                         <option value="interestingness">interestingness</option>
                         <option value="familiarity">familiarity</option>
-                        <option value="style">style</option>
+                        <option value="realism">realism</option>
                         <option value="score">score</option>
                     </select>
                     <br>
                     <label>y-axis:</label>
                     <select id="y-select" class="form-control">
                         <option value="score">score</option>
-                        <option value="colorfulness2">colorfulness</option>
+                        <option value="distinct colors">distinct colors</option>
                         <option value="edges">edges</option>
                         <option value="feature congestion">feature congestion</option>
                         <option value="entropy">entropy</option>
                         <option value="happiness">happiness</option>
-                        <option value="layout">layout</option>
+                        <option value="clutter">clutter</option>
                         <option value="interestingness">interestingness</option>
                         <option value="familiarity">familiarity</option>
-                        <option value="style">style</option>
+                        <option value="realism">realism</option>                       
                     </select>
                     <select id="my-select" class="form-control">
                         <option value="score">score</option>
-                        <option value="colorfulness2">colorfulness</option>
+                        <option value="distinct colors">distinct colors</option>                     
                         <option value="edges">edges</option>
                         <option value="feature congestion">feature congestion</option>
                         <option value="entropy">entropy</option>
                     </select>
                     <br>
+                    <label>Spearman correlation rank: <span id="correlation"></span></label>
 
                 </div>
 
@@ -200,16 +219,29 @@
 
     <section id="download" class="bg-light">
         <div class="container">
-            <p class="lead">
-                Scientific visualization dataset <span class="red-font">(Requesting permission to reuse IEEE Material pending.)</span>
+
+            <p class="">
+                We shared the following dataset and the code of our experiment. 
+                Please cite our paper if you find this model useful in your research. 
                 <!-- <button class="btn btn-primary">From high to low</button>&nbsp;&nbsp;&nbsp; 
                         <button class="btn btn-primary">From low to high</button> -->
             </p>
             <ul>
                 <li>
-                    <a class="disabled" href="#">
-                        download 
+                    <a href="http://web.cse.ohio-state.edu/~li.8950/data/image/scivismemo/VisMemo-scivis.zip">
+                        MTurk Code
                     </a>
+                </li>
+                <li>
+                    <a href="http://web.cse.ohio-state.edu/~li.8950/data/image/scivismemo/metaData.csv">
+                        Experiment Result
+                    </a>
+                </li>
+                <li>
+                    <a href="#download">
+                        Visualization Dataset 
+                    </a>
+                    <span class="red-font">(Requesting permission to reuse IEEE Material pending.)</span>
                 </li>
             </ul>
             <br>
@@ -232,7 +264,7 @@
         </div>
     </section>
 
-    <!-- <section id="about">
+    <section id="about">
         <div class="container">
             <h2>Researchers</h2>
             <br>
@@ -259,13 +291,13 @@
 
             </div>
         </div>
-    </section> -->
+    </section>
 
 
     <!-- Footer -->
     <footer class="py-3 page-foot">
         <div class="container">
-            <p class="m-0 text-center"><span class="red-font">Requesting permission to reuse IEEE Material pending.</span></p>
+            <p class="m-0 text-center">Copyright &copy; The Ohio State University 2018</p>
         </div>
         <!-- /.container -->
     </footer>
